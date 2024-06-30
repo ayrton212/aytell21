@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elaine, eu te amo!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8d7da;
+            color: #721c24;
+            font-family: 'Arial', sans-serif;
+        }
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 2em;
+        }
+        .heart, .flower {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            animation: float 5s linear infinite;
+        }
+        .heart {
+            background-image: url('https://i.imgur.com/kPbpN0E.png'); /* imagem de coração */
+        }
+        .flower {
+            background-image: url('https://i.imgur.com/yZ2S5Vp.png'); /* imagem de flor */
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Elaine, eu te amo!</div>
+    <script>
+        const body = document.body;
+
+        function createFloatingElement(className) {
+            const div = document.createElement('div');
+            div.className = className;
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.animationDuration = Math.random() * 3 + 2 + 's';
+            body.appendChild(div);
+
+            setTimeout(() => {
+                div.remove();
+            }, 5000);
+        }
+
+        setInterval(() => {
+            createFloatingElement('heart');
+            createFloatingElement('flower');
+        }, 500);
+    </script>
+</body>
+</html>
